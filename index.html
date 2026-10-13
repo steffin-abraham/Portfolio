@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Steffin Abraham | Entry-Level DevOps Engineer Portfolio. BCA graduate specializing in AWS cloud infrastructure, Git/GitHub workflows, Linux administration, and CI/CD automation.">
+  <meta name="keywords" content="Steffin Abraham, DevOps Engineer, AWS, EC2, Git, GitHub, Linux, Bash, CI/CD, Cloud Infrastructure, BCA">
+  <meta name="author" content="Steffin Abraham">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Steffin Abraham // Entry-Level DevOps Engineer">
+  <meta property="og:description" content="Cloud & DevOps enthusiast focused on reliable infrastructure, automated deployments, and robust version control.">
+  <meta property="og:type" content="website">
+
+  <title>Steffin Abraham // Entry-Level DevOps Engineer</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Cyber Mesh Background Glow -->
+  <div class="mesh-background" aria-hidden="true">
+    <canvas id="cyber-canvas" class="cyber-canvas"></canvas>
+    <!-- Floating Blurry Gradient Orbs -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+    <div class="glow-orb orb-4"></div>
+    <!-- Faint Base Grid -->
+    <div class="grid-overlay bg-grid"></div>
+    <!-- Animated Grid Pulse: Glowing Teal Sliding Beams (Pure CSS) -->
+    <div class="grid-pulse-beams" aria-hidden="true">
+      <div class="grid-pulse-beam-h"></div>
+      <div class="grid-pulse-beam-v"></div>
+    </div>
+    <!-- Dynamic Mouse-Illuminated Grid Spotlight -->
+    <div id="grid-spotlight" class="grid-spotlight"></div>
+    <!-- Interactive Mouse Follower Glow Spotlight -->
+    <div id="cursor-spotlight" class="cursor-spotlight"></div>
+    <div class="scanline-overlay"></div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" role="region" aria-live="polite" aria-label="System Notifications"></div>
+
+  <!-- Navigation Bar -->
+  <header id="main-header" class="site-header">
+    <div class="container header-container">
+      <a href="#hero" class="brand-logo" aria-label="Steffin Abraham DevOps Portfolio">
+        <span class="logo-symbol">&gt;_</span>
+        <span class="logo-text">SA <span class="accent-slash">//</span> <span class="logo-role">devops</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link"><span class="nav-num">01.</span> About</a></li>
+          <li><a href="#skills" class="nav-link"><span class="nav-num">02.</span> Skills</a></li>
+          <li><a href="#pipeline" class="nav-link"><span class="nav-num">03.</span> CI/CD</a></li>
+          <li><a href="#projects" class="nav-link"><span class="nav-num">04.</span> Projects</a></li>
+          <li><a href="#terminal" class="nav-link"><span class="nav-num">05.</span> Terminal</a></li>
+          <li><a href="#contact" class="nav-link"><span class="nav-num">06.</span> Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Interactive Audio FX Toggle -->
+        <button id="sfx-toggle-btn" class="sfx-toggle-btn" aria-label="Toggle cyber audio effects" title="Audio Effects: Click to Toggle">
+          <span class="sfx-wave-bars" aria-hidden="true">
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+          </span>
+          <span id="sfx-status-text" class="font-mono text-xs">SFX: OFF</span>
+        </button>
+
+        <div class="live-status-pill" title="System Status: AWS Infrastructure Online">
+          <span class="pulse-dot"></span>
+          <span class="status-label">US-EAST-1 LIVE</span>
+        </div>
+        <a href="#contact" class="btn btn-sm btn-outline-teal header-cta">Email Me</a>
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true">
+      <ul class="mobile-nav-list">
+        <li><a href="#about" class="mobile-nav-link"><span class="nav-num">01.</span> About</a></li>
+        <li><a href="#skills" class="mobile-nav-link"><span class="nav-num">02.</span> Skills</a></li>
+        <li><a href="#pipeline" class="mobile-nav-link"><span class="nav-num">03.</span> CI/CD Pipeline</a></li>
+        <li><a href="#projects" class="mobile-nav-link"><span class="nav-num">04.</span> Projects & Labs</a></li>
+        <li><a href="#terminal" class="mobile-nav-link"><span class="nav-num">05.</span> Interactive Terminal</a></li>
+        <li><a href="#contact" class="mobile-nav-link"><span class="nav-num">06.</span> Contact</a></li>
+        <li class="mobile-cta-item">
+          <a href="mailto:steffin2000@gmail.com" class="btn btn-teal btn-block">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            steffin2000@gmail.com
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <!-- Terminal Prompt Tag -->
+          <div class="terminal-badge-wrapper">
+            <div class="terminal-prompt-badge">
+              <span class="prompt-user">guest@production</span><span class="prompt-sep">:</span><span class="prompt-path">~</span><span class="prompt-char">$</span>
+              <span class="prompt-cmd">whoami</span>
+            </div>
+            <div class="uptime-badge">
+              <span class="uptime-dot"></span>
+              <span>Uptime: 99.98%</span>
+            </div>
+          </div>
+
+          <!-- Typing Headline -->
+          <h1 class="hero-title">
+            <span id="typed-text" class="typed-text">Steffin Abraham</span><span class="cursor" aria-hidden="true">_</span>
+          </h1>
+
+          <div class="hero-subtitle-chip">
+            <span class="chip-item">BCA Graduate</span>
+            <span class="chip-divider">//</span>
+            <span class="chip-item">AWS Cloud</span>
+            <span class="chip-divider">//</span>
+            <span class="chip-item">Linux Admin</span>
+            <span class="chip-divider">//</span>
+            <span class="chip-item">Git CI/CD</span>
+          </div>
+
+          <p class="hero-bio">
+            An entry-level <strong>DevOps Engineer</strong> and Bachelor of Computer Applications (BCA) graduate dedicated to building resilient cloud infrastructure, automated provisioning, and streamlined deployment pipelines. Combining hands-on practice in <strong>AWS EC2</strong>, robust <strong>Git workflows</strong>, and <strong>Linux systems</strong> to bridge development and reliable operations.
+          </p>
+
+          <!-- CTA Buttons & Quick Links -->
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-teal">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>View Projects & Labs</span>
+            </a>
+            <a href="#terminal" class="btn btn-outline-amber">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+              <span>Launch Terminal</span>
+            </a>
+            <a href="#contact" class="btn btn-ghost">
+              <span>Contact Me &rarr;</span>
+            </a>
+          </div>
+
+          <!-- Quick Infrastructure Metrics Strip -->
+          <div class="infra-metrics-strip reveal-on-scroll">
+            <div class="metric-card reveal-item reveal-on-scroll">
+              <div class="metric-value counter-value" data-target="99.98" data-suffix="%">99.98%</div>
+              <div class="metric-label">Target Cloud Uptime</div>
+            </div>
+            <div class="metric-card reveal-item reveal-on-scroll">
+              <div class="metric-value counter-value" data-target="100" data-suffix="%">100%</div>
+              <div class="metric-label">Clean Git Branches</div>
+            </div>
+            <div class="metric-card reveal-item reveal-on-scroll">
+              <div class="metric-value counter-value" data-target="0" data-prefix="" data-suffix="">0</div>
+              <div class="metric-label">Vulnerabilities Found</div>
+            </div>
+            <div class="metric-card reveal-item reveal-on-scroll">
+              <div class="metric-value counter-value" data-target="14" data-prefix="< " data-suffix="ms">&lt; 14ms</div>
+              <div class="metric-label">EC2 Fast RTT Ping</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual: Simulated Cloud Node Box -->
+        <div class="hero-visual reveal-item reveal-on-scroll">
+          <div class="terminal-card hero-terminal-window">
+            <div class="terminal-scanline-beam" aria-hidden="true"></div>
+            <div class="terminal-header">
+              <div class="window-controls">
+                <span class="ctrl-btn ctrl-close"></span>
+                <span class="ctrl-btn ctrl-min"></span>
+                <span class="ctrl-btn ctrl-max"></span>
+              </div>
+              <div class="window-title">cloud-node-01 [aws-ec2-t3.micro]</div>
+              <div class="window-status"><span class="badge-active">ACTIVE</span></div>
+            </div>
+            <div class="terminal-body font-mono">
+              <div class="code-line"><span class="text-teal">$</span> <span class="text-white">aws ec2 describe-instances --filters "Name=tag:Owner,Values=Steffin"</span></div>
+              <div class="code-output text-muted">
+                {<br>
+                &nbsp;&nbsp;<span class="text-amber">"InstanceId"</span>: <span class="text-teal">"i-0a8bf29c1932ed0"</span>,<br>
+                &nbsp;&nbsp;<span class="text-amber">"InstanceType"</span>: <span class="text-teal">"t3.micro"</span>,<br>
+                &nbsp;&nbsp;<span class="text-amber">"State"</span>: { <span class="text-amber">"Name"</span>: <span class="text-teal">"running"</span> },<br>
+                &nbsp;&nbsp;<span class="text-amber">"SecurityGroups"</span>: [ <span class="text-white">"sg-webserver-strict"</span> ],<br>
+                &nbsp;&nbsp;<span class="text-amber">"Engineer"</span>: <span class="text-white">"Steffin Abraham (BCA)"</span><br>
+                }
+              </div>
+              <div class="code-line"><span class="text-teal">$</span> <span class="text-white">git status -s</span></div>
+              <div class="code-output text-teal">## main...origin/main [clean working tree, ready for deploy]</div>
+              <div class="code-line"><span class="text-teal">$</span> <span class="text-white">./deploy.sh --target prod --verify</span></div>
+              <div class="code-output text-amber">[OK] Pre-flight checks passed: 0 vulnerabilities found</div>
+              <div class="code-output text-teal">[SUCCESS] Nginx web server active (PID: 1420) & listening on :80</div>
+              <div class="code-prompt-interactive">
+                <span class="text-teal">&gt;</span> <span class="blink">system ready for incoming packets...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live DevOps Telemetry Stream Marquee -->
+    <aside class="telemetry-stream-bar" aria-label="Real-time Infrastructure Telemetry">
+      <div class="telemetry-track">
+        <div class="telemetry-group">
+          <span class="telemetry-item"><span class="pulse-dot-sm"></span> AWS REGION: us-east-1</span>
+          <span class="telemetry-sep">&bull;</span>
+          <span class="telemetry-item"><span class="text-teal font-bold">STATUS:</span> OPERATIONAL (100% UPTIME)</span>
+          <span class="telemetry-sep">&bull;</span>
+          <span class="telemetry-item"><span class="text-amber font-bold">GIT TREE:</span> origin/main (SYNCED)</span>
+          <span class="telemetry-sep">&bull;</span>
+          <span class="telemetry-item"><span class="text-teal font-bold">INSTANCE:</span> t3.micro (AMAZON LINUX 2023)</span>
+          <span class="telemetry-sep">&bull;</span>
+          <span class="telemetry-item"><span class="text-amber font-bold">SECURITY:</span> PORT 22 RESTRICTED INGRESS</span>
+          <span class="telemetry-sep">&bull;</span>
+          <span class="telemetry-item"><span class="text-teal font-bold">CI/CD:</span> GITHUB ACTIONS ACTIVE</span>
+          <span class="telemetry-sep">&bull;</span>
+          <span class="telemetry-item"><span class="text-white font-bold">PING:</span> 12ms RTT</span>
+          <span class="telemetry-sep">&bull;</span>
+          <span class="telemetry-item"><span class="text-teal font-bold">ENGINEER:</span> STEFFIN ABRAHAM (BCA)</span>
+          <span class="telemetry-sep">&bull;</span>
+        </div>
+        <!-- Duplicate for infinite seamless marquee loop -->
+        <div class="telemetry-group" aria-hidden="true">
+          <span class="telemetry-item"><span class="pulse-dot-sm"></span> AWS REGION: us-east-1</span>
+          <span class="telemetry-sep">&bull;</span>
+          <span class="telemetry-item"><span class="text-teal font-bold">STATUS:</span> OPERATIONAL (100% UPTIME)</span>
+          <span class="telemetry-sep">&bull;</span>
+          <span class="telemetry-item"><span class="text-amber font-bold">GIT TREE:</span> origin/main (SYNCED)</span>
+          <span class="telemetry-sep">&bull;</span>
+          <span class="telemetry-item"><span class="text-teal font-bold">INSTANCE:</span> t3.micro (AMAZON LINUX 2023)</span>
+          <span class="telemetry-sep">&bull;</span>
+          <span class="telemetry-item"><span class="text-amber font-bold">SECURITY:</span> PORT 22 RESTRICTED INGRESS</span>
+          <span class="telemetry-sep">&bull;</span>
+          <span class="telemetry-item"><span class="text-teal font-bold">CI/CD:</span> GITHUB ACTIONS ACTIVE</span>
+          <span class="telemetry-sep">&bull;</span>
+          <span class="telemetry-item"><span class="text-white font-bold">PING:</span> 12ms RTT</span>
+          <span class="telemetry-sep">&bull;</span>
+          <span class="telemetry-item"><span class="text-teal font-bold">ENGINEER:</span> STEFFIN ABRAHAM (BCA)</span>
+          <span class="telemetry-sep">&bull;</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- About Section -->
+    <section id="about" class="section reveal-on-scroll">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="section-tag font-mono">&lt;01. Profile Summary&gt;</div>
+          <h2 class="section-title">Foundations & Engineering Mindset</h2>
+          <p class="section-subtitle">Bridging software application fundamentals with modern cloud automation.</p>
+        </div>
+
+        <div class="about-grid reveal-on-scroll">
+          <div class="glass-card about-main-card reveal-on-scroll">
+            <div class="card-glow-edge"></div>
+            <div class="card-inner">
+              <div class="profile-header">
+                <div class="avatar-badge">
+                  <span class="avatar-initials">SA</span>
+                  <span class="online-indicator" title="Available for DevOps Opportunities"></span>
+                </div>
+                <div class="profile-title-block">
+                  <h3 class="profile-name">Steffin Abraham</h3>
+                  <div class="profile-designation font-mono text-teal">DevOps Engineer • Cloud Infrastructure</div>
+                  <div class="profile-meta">
+                    <span class="meta-tag">🎓 Bachelor of Computer Applications (BCA)</span>
+                    <span class="meta-tag">📍 Cloud & Systems Focus</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="about-text-content">
+                <p>
+                  As a <strong>Bachelor of Computer Applications (BCA)</strong> graduate, I have grounded my technical foundation in core computer science—algorithms, networking models, and systems architecture. Recognizing that software is only as good as the infrastructure running it, I shifted my focus toward <strong>DevOps, Cloud Computing, and Infrastructure Automation</strong>.
+                </p>
+                <p>
+                  My day-to-day workflow centers on spinning up repeatable cloud environments on <strong>AWS</strong>, crafting defensive security group rules, managing collaborative codebases using strict <strong>Git workflows</strong>, and automating mundane tasks using <strong>Linux Bash scripting</strong>.
+                </p>
+                <p>
+                  I believe in the mantra: <em>"Automate early, monitor continuously, and treat infrastructure as code."</em> I am actively looking for an entry-level DevOps role where I can contribute to reliable deployments, collaborate with cross-functional teams, and expand into Docker, Kubernetes, and Terraform.
+                </p>
+              </div>
+
+              <div class="principles-grid reveal-on-scroll">
+                <div class="principle-item reveal-on-scroll">
+                  <div class="principle-icon font-mono text-teal">01</div>
+                  <div class="principle-content">
+                    <h4>Cloud Reliability</h4>
+                    <p>Building secure, well-isolated AWS compute instances with strict security groups and minimal attack surfaces.</p>
+                  </div>
+                </div>
+                <div class="principle-item reveal-on-scroll">
+                  <div class="principle-icon font-mono text-amber">02</div>
+                  <div class="principle-content">
+                    <h4>Clean Version Control</h4>
+                    <p>Maintaining predictable git trees, enforce feature branch hygiene, structured PRs, and no surprise broken builds.</p>
+                  </div>
+                </div>
+                <div class="principle-item reveal-on-scroll">
+                  <div class="principle-icon font-mono text-teal">03</div>
+                  <div class="principle-content">
+                    <h4>Linux Discipline</h4>
+                    <p>Comfortable inside remote SSH sessions, understanding processes, permission bits, systemd daemons, and log parsing.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Academic & Professional Highlights Column -->
+          <div class="about-side-column reveal-on-scroll">
+            <!-- Education Card -->
+            <div class="glass-card education-card reveal-on-scroll">
+              <div class="card-glow-edge"></div>
+              <div class="card-inner">
+                <div class="card-header-with-badge">
+                  <div class="card-icon-title">
+                    <svg class="icon icon-lg text-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                    <div>
+                      <h4 class="card-heading">Education</h4>
+                      <div class="font-mono text-xs text-muted">ACADEMIC BACKGROUND</div>
+                    </div>
+                  </div>
+                  <span class="badge badge-teal">COMPLETED</span>
+                </div>
+                <div class="education-details">
+                  <h5 class="degree-title">Bachelor of Computer Applications (BCA)</h5>
+                  <p class="edu-desc text-muted">
+                    Strong foundational coursework in Operating Systems, Computer Networks (TCP/IP, DNS, Subnets), Database Management, and Object-Oriented Software Design.
+                  </p>
+                  <ul class="edu-highlights">
+                    <li><span class="text-teal">&check;</span> Systems & Network Foundations</li>
+                    <li><span class="text-teal">&check;</span> Web Technologies & Linux OS</li>
+                    <li><span class="text-teal">&check;</span> Applied Cloud & DevOps Labs</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Contact Fast Card -->
+            <div class="glass-card contact-fast-card reveal-on-scroll">
+              <div class="card-glow-edge"></div>
+              <div class="card-inner">
+                <div class="card-icon-title">
+                  <svg class="icon icon-lg text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <div>
+                    <h4 class="card-heading">Direct Reach</h4>
+                    <div class="font-mono text-xs text-muted">RECRUITER & TEAM INQUIRIES</div>
+                  </div>
+                </div>
+                <p class="text-sm text-muted">Ready to discuss junior DevOps, cloud support, or infrastructure associate roles.</p>
+                <div class="fast-email-box">
+                  <span class="font-mono text-sm text-white select-all">steffin2000@gmail.com</span>
+                  <button id="copy-email-btn" class="btn btn-xs btn-outline-teal" title="Copy to clipboard">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <span>Copy</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills" class="section reveal-on-scroll">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="section-tag font-mono">&lt;02. Core Competencies&gt;</div>
+          <h2 class="section-title">Technical Skills & Tooling</h2>
+          <p class="section-subtitle">Categorized breakdown of cloud infrastructure, version control pipelines, and system scripting tools.</p>
+        </div>
+
+        <div class="skills-grid reveal-on-scroll">
+          <!-- Skill Card 1: Cloud Infrastructure (AWS) -->
+          <div class="glass-card skill-card reveal-on-scroll">
+            <div class="card-glow-edge"></div>
+            <div class="card-inner">
+              <div class="skill-card-top">
+                <div class="skill-icon-box bg-teal-glow">
+                  <!-- AWS / Cloud Icon -->
+                  <svg class="icon icon-xl text-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                </div>
+                <div class="skill-header-meta">
+                  <div class="font-mono text-xs text-amber">CLOUD PLATFORM</div>
+                  <h3 class="skill-category-title">AWS Infrastructure</h3>
+                </div>
+              </div>
+              <p class="skill-category-desc">
+                Hands-on provisioning, configuration, and security management on Amazon Web Services.
+              </p>
+              
+              <ul class="skill-items-list reveal-on-scroll">
+                <li class="skill-item reveal-on-scroll">
+                  <div class="skill-item-info">
+                    <span class="skill-name">EC2 Provisioning & Management</span>
+                    <span class="skill-badge font-mono">Hands-on</span>
+                  </div>
+                  <p class="skill-item-detail">Instance sizing (t2/t3), Amazon Linux & Ubuntu AMIs, User Data bootstrap automation, elastic IP handling.</p>
+                </li>
+                <li class="skill-item reveal-on-scroll">
+                  <div class="skill-item-info">
+                    <span class="skill-name">Security Groups & Networking</span>
+                    <span class="skill-badge font-mono">Defensive</span>
+                  </div>
+                  <p class="skill-item-detail">Inbound/outbound stateful rule enforcement (Port 22 SSH IP whitelisting, HTTP/HTTPS 80/443), basic VPC subnet awareness.</p>
+                </li>
+                <li class="skill-item reveal-on-scroll">
+                  <div class="skill-item-info">
+                    <span class="skill-name">IAM Basics & Access Security</span>
+                    <span class="skill-badge font-mono">Principle of Least Privilege</span>
+                  </div>
+                  <p class="skill-item-detail">IAM users, group policies, access keys rotation, EC2 IAM instance roles for secure AWS CLI calls.</p>
+                </li>
+                <li class="skill-item reveal-on-scroll">
+                  <div class="skill-item-info">
+                    <span class="skill-name">Key Pairs & SSH Bastion Access</span>
+                    <span class="skill-badge font-mono">Secure Access</span>
+                  </div>
+                  <p class="skill-item-detail">RSA key pair generation, strict private key permissions (`chmod 400`), passwordless remote login.</p>
+                </li>
+              </ul>
+
+              <div class="skill-tags">
+                <span class="tech-tag">AWS EC2</span>
+                <span class="tech-tag">Security Groups</span>
+                <span class="tech-tag">Basic IAM</span>
+                <span class="tech-tag">AMIs</span>
+                <span class="tech-tag">User Data</span>
+                <span class="tech-tag">AWS CLI</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Card 2: Version Control (Git & GitHub) -->
+          <div class="glass-card skill-card reveal-on-scroll">
+            <div class="card-glow-edge"></div>
+            <div class="card-inner">
+              <div class="skill-card-top">
+                <div class="skill-icon-box bg-amber-glow">
+                  <!-- Git / Branching Icon -->
+                  <svg class="icon icon-xl text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
+                </div>
+                <div class="skill-header-meta">
+                  <div class="font-mono text-xs text-amber">VERSION CONTROL</div>
+                  <h3 class="skill-category-title">Git & GitHub Workflows</h3>
+                </div>
+              </div>
+              <p class="skill-category-desc">
+                Disciplined source control strategies, branch lifecycle management, and collaborative code reviews.
+              </p>
+              
+              <ul class="skill-items-list reveal-on-scroll">
+                <li class="skill-item reveal-on-scroll">
+                  <div class="skill-item-info">
+                    <span class="skill-name">Branch Management Strategies</span>
+                    <span class="skill-badge font-mono">Trunk / GitFlow</span>
+                  </div>
+                  <p class="skill-item-detail">Feature branching (`feature/*`, `hotfix/*`), release tags, maintaining clean linear histories via rebase.</p>
+                </li>
+                <li class="skill-item reveal-on-scroll">
+                  <div class="skill-item-info">
+                    <span class="skill-name">Merge Workflows & Conflict Resolution</span>
+                    <span class="skill-badge font-mono">3-Way Merges</span>
+                  </div>
+                  <p class="skill-item-detail">Resolving complex conflicts locally, interactive rebasing (`git rebase -i`), squash merging for tidy commits.</p>
+                </li>
+                <li class="skill-item reveal-on-scroll">
+                  <div class="skill-item-info">
+                    <span class="skill-name">Pull Requests & Branch Protection</span>
+                    <span class="skill-badge font-mono">Governance</span>
+                  </div>
+                  <p class="skill-item-detail">Enforcing pull request peer reviews, requiring status checks before merge, preventing direct commits to `main`.</p>
+                </li>
+                <li class="skill-item reveal-on-scroll">
+                  <div class="skill-item-info">
+                    <span class="skill-name">GitHub Collaboration & Issues</span>
+                    <span class="skill-badge font-mono">Collaboration</span>
+                  </div>
+                  <p class="skill-item-detail">Remote remotes management (`origin`, `upstream`), SSH key auth, semantic commit messages (Conventional Commits).</p>
+                </li>
+              </ul>
+
+              <div class="skill-tags">
+                <span class="tech-tag">Git CLI</span>
+                <span class="tech-tag">GitHub</span>
+                <span class="tech-tag">Branch Protection</span>
+                <span class="tech-tag">PR Workflows</span>
+                <span class="tech-tag">Interactive Rebase</span>
+                <span class="tech-tag">Merge Conflict Fixes</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Card 3: Scripting & Linux Systems -->
+          <div class="glass-card skill-card reveal-on-scroll">
+            <div class="card-glow-edge"></div>
+            <div class="card-inner">
+              <div class="skill-card-top">
+                <div class="skill-icon-box bg-teal-glow">
+                  <!-- Terminal / Linux Icon -->
+                  <svg class="icon icon-xl text-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                </div>
+                <div class="skill-header-meta">
+                  <div class="font-mono text-xs text-teal">OPERATING SYSTEMS</div>
+                  <h3 class="skill-category-title">Linux Administration & Bash</h3>
+                </div>
+              </div>
+              <p class="skill-category-desc">
+                Command-line fluency, shell scripting for task automation, process monitoring, and system configuration.
+              </p>
+              
+              <ul class="skill-items-list reveal-on-scroll">
+                <li class="skill-item reveal-on-scroll">
+                  <div class="skill-item-info">
+                    <span class="skill-name">Linux Command Line & Navigation</span>
+                    <span class="skill-badge font-mono">POSIX</span>
+                  </div>
+                  <p class="skill-item-detail">File hierarchy standard, piping & redirection (`|`, `>`, `>>`), text processing (`grep`, `awk`, `sed`, `find`, `curl`).</p>
+                </li>
+                <li class="skill-item reveal-on-scroll">
+                  <div class="skill-item-info">
+                    <span class="skill-name">Bash Scripting Fundamentals</span>
+                    <span class="skill-badge font-mono">Automation</span>
+                  </div>
+                  <p class="skill-item-detail">Writing reusable scripts with variables, conditionals, loops, exit codes (`set -e`), functions, and log output.</p>
+                </li>
+                <li class="skill-item reveal-on-scroll">
+                  <div class="skill-item-info">
+                    <span class="skill-name">Permissions, Users & systemd</span>
+                    <span class="skill-badge font-mono">Admin</span>
+                  </div>
+                  <p class="skill-item-detail">`chmod`, `chown`, user groups, `sudo` policies, managing services via `systemctl` (start, restart, status, enable).</p>
+                </li>
+                <li class="skill-item reveal-on-scroll">
+                  <div class="skill-item-info">
+                    <span class="skill-name">System Monitoring & Logs</span>
+                    <span class="skill-badge font-mono">Observability</span>
+                  </div>
+                  <p class="skill-item-detail">Monitoring resources (`top`, `htop`, `df -h`, `free -m`, `netstat`/`ss`), inspecting journal logs (`journalctl`, `/var/log`).</p>
+                </li>
+              </ul>
+
+              <div class="skill-tags">
+                <span class="tech-tag">Ubuntu / Debian</span>
+                <span class="tech-tag">Amazon Linux</span>
+                <span class="tech-tag">Bash Scripts</span>
+                <span class="tech-tag">systemd</span>
+                <span class="tech-tag">SSH & Keys</span>
+                <span class="tech-tag">Cron Jobs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic Pipeline Visualizer Section -->
+    <section id="pipeline" class="section pipeline-section reveal-on-scroll">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="section-tag font-mono">&lt;03. Automated Flow&gt;</div>
+          <h2 class="section-title">Dynamic CI/CD Pipeline Visualizer</h2>
+          <p class="section-subtitle">Interactive simulation of an end-to-end continuous integration and delivery workflow.</p>
+        </div>
+
+        <div class="glass-card pipeline-wrapper-card reveal-on-scroll">
+          <div class="card-glow-edge"></div>
+          <div class="card-inner">
+            <div class="pipeline-controls-bar">
+              <div class="pipeline-info-group">
+                <div class="font-mono text-xs text-muted">WORKFLOW:</div>
+                <div class="font-mono text-sm text-teal font-bold">deploy-webserver-ec2.yml</div>
+              </div>
+              <div class="pipeline-action-group">
+                <button id="trigger-pipeline-btn" class="btn btn-sm btn-teal">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  <span>Trigger Pipeline Run</span>
+                </button>
+                <button id="reset-pipeline-btn" class="btn btn-sm btn-ghost">Reset</button>
+              </div>
+            </div>
+
+            <!-- Pipeline Visual Timeline Nodes -->
+            <div class="pipeline-visual-track reveal-on-scroll" aria-label="CI/CD Pipeline Stages">
+              <!-- Stage 1: Code -->
+              <div class="pipeline-node" id="stage-code" data-stage="0">
+                <div class="node-status-glow"></div>
+                <div class="node-icon-circle">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <div class="node-details">
+                  <span class="node-step-tag font-mono">01. CODE</span>
+                  <h4 class="node-title">Git Commit & Push</h4>
+                  <p class="node-desc">PR merged into main branch</p>
+                  <span class="node-state-badge badge-success font-mono">PASSED</span>
+                </div>
+              </div>
+
+              <div class="pipeline-connector"><div class="connector-line"><span class="packet-particle"></span></div></div>
+
+              <!-- Stage 2: Build -->
+              <div class="pipeline-node" id="stage-build" data-stage="1">
+                <div class="node-status-glow"></div>
+                <div class="node-icon-circle">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                </div>
+                <div class="node-details">
+                  <span class="node-step-tag font-mono">02. BUILD</span>
+                  <h4 class="node-title">Artifact Packaging</h4>
+                  <p class="node-desc">User Data script & static web files</p>
+                  <span class="node-state-badge badge-success font-mono">PASSED</span>
+                </div>
+              </div>
+
+              <div class="pipeline-connector"><div class="connector-line"><span class="packet-particle"></span></div></div>
+
+              <!-- Stage 3: Test -->
+              <div class="pipeline-node" id="stage-test" data-stage="2">
+                <div class="node-status-glow"></div>
+                <div class="node-icon-circle">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                </div>
+                <div class="node-details">
+                  <span class="node-step-tag font-mono">03. TEST</span>
+                  <h4 class="node-title">Security & Lint Checks</h4>
+                  <p class="node-desc">Bash ShellCheck & Port 22 audit</p>
+                  <span class="node-state-badge badge-success font-mono">PASSED</span>
+                </div>
+              </div>
+
+              <div class="pipeline-connector"><div class="connector-line"><span class="packet-particle"></span></div></div>
+
+              <!-- Stage 4: Deploy -->
+              <div class="pipeline-node" id="stage-deploy" data-stage="3">
+                <div class="node-status-glow"></div>
+                <div class="node-icon-circle">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                </div>
+                <div class="node-details">
+                  <span class="node-step-tag font-mono">04. DEPLOY</span>
+                  <h4 class="node-title">AWS EC2 Production</h4>
+                  <p class="node-desc">Zero-downtime service reload</p>
+                  <span class="node-state-badge badge-live font-mono">DEPLOYED</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Simulation Terminal Output -->
+            <div class="pipeline-log-window">
+              <div class="pipeline-log-header">
+                <span class="font-mono text-xs text-muted">SIMULATED EXECUTION LOGS</span>
+                <span id="pipeline-status-text" class="font-mono text-xs text-teal">● STATUS: IDLE (READY TO RUN)</span>
+              </div>
+              <div id="pipeline-log-content" class="pipeline-log-content font-mono text-xs">
+                <div class="log-row"><span class="log-time">[00:00:01]</span> <span class="log-tag tag-info">INFO</span> Pipeline initialized for commit <span class="text-teal">a7f14b2</span> by Steffin Abraham.</div>
+                <div class="log-row"><span class="log-time">[00:00:02]</span> <span class="log-tag tag-pass">SUCCESS</span> Stage: CODE - Git branch verified, pull request checks completed.</div>
+                <div class="log-row"><span class="log-time">[00:00:04]</span> <span class="log-tag tag-pass">SUCCESS</span> Stage: BUILD - Web assets bundled, configuration verified.</div>
+                <div class="log-row"><span class="log-time">[00:00:06]</span> <span class="log-tag tag-pass">SUCCESS</span> Stage: TEST - Shell scripts syntax valid, no exposed secrets.</div>
+                <div class="log-row"><span class="log-time">[00:00:08]</span> <span class="log-tag tag-deploy">LIVE</span> Stage: DEPLOY - AWS EC2 instance responding HTTP 200 OK on port 80.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects / Hands-On Labs Showcase Section -->
+    <section id="projects" class="section reveal-on-scroll">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="section-tag font-mono">&lt;04. Practical Engineering&gt;</div>
+          <h2 class="section-title">Projects & Hands-On Labs</h2>
+          <p class="section-subtitle">Real-world implementations demonstrating infrastructure setup, branch automation, and Linux administration.</p>
+        </div>
+
+        <div class="projects-grid reveal-on-scroll">
+          <!-- Project 1: Automated EC2 Web Server Deployment -->
+          <article class="glass-card project-card reveal-on-scroll">
+            <div class="card-glow-edge"></div>
+            <div class="card-inner">
+              <div class="project-header">
+                <div class="project-num font-mono text-teal">PROJECT // 01</div>
+                <div class="project-badge font-mono badge-teal">AWS LAB</div>
+              </div>
+
+              <h3 class="project-title">Automated EC2 Web Server Deployment</h3>
+              <p class="project-summary">
+                Designed and provisioned an automated web server on Amazon Web Services using EC2, tightly-scoped Security Groups, custom RSA key pairs, and a Bash User Data bootstrap script.
+              </p>
+
+              <div class="project-architecture-box font-mono">
+                <div class="arch-flow">
+                  <span class="arch-node">AWS Console/CLI</span>
+                  <span class="arch-arrow">&rarr;</span>
+                  <span class="arch-node">VPC / Security Group</span>
+                  <span class="arch-arrow">&rarr;</span>
+                  <span class="arch-node">EC2 (t3.micro)</span>
+                  <span class="arch-arrow">&rarr;</span>
+                  <span class="arch-node">Nginx / Apache HTTP 80</span>
+                </div>
+              </div>
+
+              <div class="project-highlights">
+                <div class="highlight-item">
+                  <span class="text-teal font-bold">&check;</span>
+                  <span><strong>Security Group Hardening:</strong> Restricted SSH (Port 22) to authorized admin IP; opened public HTTP (Port 80) for web traffic.</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="text-teal font-bold">&check;</span>
+                  <span><strong>Zero-Touch Bootstrapping:</strong> Crafted EC2 User Data script installing web server packages, activating systemd daemon, and deploying landing page on initial launch.</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="text-teal font-bold">&check;</span>
+                  <span><strong>Key Management:</strong> Configured RSA `.pem` keys with POSIX permission enforcement (`chmod 400`) for passwordless remote administration.</span>
+                </div>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div class="project-tech-tags">
+                <span class="tech-tag">AWS EC2</span>
+                <span class="tech-tag">Security Groups</span>
+                <span class="tech-tag">Nginx / Apache</span>
+                <span class="tech-tag">Bash User Data</span>
+                <span class="tech-tag">SSH Keys</span>
+                <span class="tech-tag">Linux systemd</span>
+              </div>
+
+              <!-- Card Action Footers -->
+              <div class="project-footer-actions">
+                <button class="btn btn-sm btn-outline-teal lab-detail-trigger" data-project="ec2">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                  <span>View Lab Architecture & Script</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Multi-Branch Git Collaboration Workflow -->
+          <article class="glass-card project-card reveal-on-scroll">
+            <div class="card-glow-edge"></div>
+            <div class="card-inner">
+              <div class="project-header">
+                <div class="project-num font-mono text-amber">PROJECT // 02</div>
+                <div class="project-badge font-mono badge-amber">GIT & GITHUB LAB</div>
+              </div>
+
+              <h3 class="project-title">Multi-Branch Git Collaboration Workflow</h3>
+              <p class="project-summary">
+                Architected an enterprise-style Git branching and pull request workflow preventing regressions, simulating complex merge conflicts, and enforcing automated branch protection rules.
+              </p>
+
+              <div class="project-architecture-box font-mono">
+                <div class="arch-flow">
+                  <span class="arch-node">feature/infra-setup</span>
+                  <span class="arch-arrow">&rarr;</span>
+                  <span class="arch-node">PR + Conflict Resolution</span>
+                  <span class="arch-arrow">&rarr;</span>
+                  <span class="arch-node">develop</span>
+                  <span class="arch-arrow">&rarr;</span>
+                  <span class="arch-node">main (Protected)</span>
+                </div>
+              </div>
+
+              <div class="project-highlights">
+                <div class="highlight-item">
+                  <span class="text-amber font-bold">&check;</span>
+                  <span><strong>Branch Protection Rules:</strong> Enforced mandatory pull request reviews, required passing checks, and disabled force-pushes (`git push -f`) on production branches.</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="text-amber font-bold">&check;</span>
+                  <span><strong>Conflict Resolution Drills:</strong> Deliberately simulated concurrent edits on identical lines across team branches, resolving conflicts cleanly using 3-way merge tools.</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="text-amber font-bold">&check;</span>
+                  <span><strong>Clean History Discipline:</strong> Leveraged interactive rebase (`git rebase -i`) to squash messy debugging commits into semantic, auditable release logs.</span>
+                </div>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div class="project-tech-tags">
+                <span class="tech-tag">Git CLI</span>
+                <span class="tech-tag">GitHub Rulesets</span>
+                <span class="tech-tag">Pull Requests</span>
+                <span class="tech-tag">Interactive Rebase</span>
+                <span class="tech-tag">Merge Conflict Handling</span>
+                <span class="tech-tag">Semantic Commits</span>
+              </div>
+
+              <!-- Card Action Footers -->
+              <div class="project-footer-actions">
+                <button class="btn btn-sm btn-outline-amber lab-detail-trigger" data-project="git">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                  <span>View Branching Strategy & CLI Drill</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Linux Systems & Service Health Watchdog (Bonus Practical Lab) -->
+          <article class="glass-card project-card reveal-on-scroll">
+            <div class="card-glow-edge"></div>
+            <div class="card-inner">
+              <div class="project-header">
+                <div class="project-num font-mono text-teal">PROJECT // 03</div>
+                <div class="project-badge font-mono badge-teal">LINUX LAB</div>
+              </div>
+
+              <h3 class="project-title">Linux System Daemon & Uptime Watchdog</h3>
+              <p class="project-summary">
+                Engineered a lightweight Bash monitoring script running via cron/systemd that inspects web server status, checks memory/disk thresholds, and automatically self-heals failing daemons.
+              </p>
+
+              <div class="project-architecture-box font-mono">
+                <div class="arch-flow">
+                  <span class="arch-node">Cron / Systemd Timer</span>
+                  <span class="arch-arrow">&rarr;</span>
+                  <span class="arch-node">Health Check Script</span>
+                  <span class="arch-arrow">&rarr;</span>
+                  <span class="arch-node">Auto-Restart Daemon</span>
+                  <span class="arch-arrow">&rarr;</span>
+                  <span class="arch-node">Syslog Alert</span>
+                </div>
+              </div>
+
+              <div class="project-highlights">
+                <div class="highlight-item">
+                  <span class="text-teal font-bold">&check;</span>
+                  <span><strong>Automated Self-Healing:</strong> Inspects PID states; if Nginx/Apache crashes, restarts service via `systemctl restart` and logs the incident.</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="text-teal font-bold">&check;</span>
+                  <span><strong>Resource Utilization Thresholds:</strong> Triggers warning logs when disk partitions exceed 85% capacity or memory leaks are detected.</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="text-teal font-bold">&check;</span>
+                  <span><strong>POSIX Compliant:</strong> Built with robust defensive scripting (`set -euo pipefail`) and standardized exit codes.</span>
+                </div>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div class="project-tech-tags">
+                <span class="tech-tag">Bash Scripting</span>
+                <span class="tech-tag">systemd</span>
+                <span class="tech-tag">Cron</span>
+                <span class="tech-tag">POSIX Shell</span>
+                <span class="tech-tag">Syslog</span>
+                <span class="tech-tag">Linux Diagnostics</span>
+              </div>
+
+              <!-- Card Action Footers -->
+              <div class="project-footer-actions">
+                <button class="btn btn-sm btn-outline-teal lab-detail-trigger" data-project="linux">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                  <span>View Bash Script & Logs</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Terminal / Playground Section -->
+    <section id="terminal" class="section terminal-playground-section reveal-on-scroll">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="section-tag font-mono">&lt;05. Interactive Console&gt;</div>
+          <h2 class="section-title">Interactive DevOps Terminal</h2>
+          <p class="section-subtitle">Simulated shell interface. Type DevOps commands to interrogate skills, infrastructure specs, or trigger automations.</p>
+        </div>
+
+        <div class="terminal-container reveal-on-scroll">
+          <!-- Terminal Quick Command Chips for Fast Clicking / Mobile -->
+          <div class="terminal-chips-bar" aria-label="Quick Command Buttons">
+            <span class="chips-label font-mono text-xs text-muted">QUICK COMMANDS:</span>
+            <button class="cmd-chip" data-cmd="help">help</button>
+            <button class="cmd-chip" data-cmd="whoami">whoami</button>
+            <button class="cmd-chip" data-cmd="skills">skills</button>
+            <button class="cmd-chip" data-cmd="aws">aws</button>
+            <button class="cmd-chip" data-cmd="git">git</button>
+            <button class="cmd-chip" data-cmd="projects">projects</button>
+            <button class="cmd-chip" data-cmd="pipeline">pipeline</button>
+            <button class="cmd-chip" data-cmd="contact">contact</button>
+            <button class="cmd-chip" data-cmd="clear">clear</button>
+          </div>
+
+          <!-- Main Terminal Box -->
+          <div class="terminal-card interactive-terminal-box">
+            <div class="terminal-header">
+              <div class="window-controls">
+                <span class="ctrl-btn ctrl-close"></span>
+                <span class="ctrl-btn ctrl-min"></span>
+                <span class="ctrl-btn ctrl-max"></span>
+              </div>
+              <div class="window-title font-mono">steffin@devops-node: ~ (bash 5.2)</div>
+              <div class="terminal-session-info font-mono text-xs text-muted">SSH: ACTIVE</div>
+            </div>
+
+            <div id="terminal-history" class="terminal-history font-mono" role="log" aria-live="polite">
+              <div class="term-line banner-line">
+                <pre class="ascii-banner">
+   ____  _____ _____ _____ ___ _   _ 
+  / ___||_   _| ____|  ___| __| \ | |
+  \___ \  | | |  _| | |_  | _||  \| |
+   ___) | | | | |___|  _| | __| |\  |
+  |____/  |_| |_____|_|   |___|_| \_|
+  ===================================
+  Steffin Abraham // DevOps Shell v1.0
+  Type 'help' to inspect available commands.
+                </pre>
+              </div>
+              <div class="term-line">
+                <span class="term-prompt"><span class="text-teal">steffin@devops-node</span>:<span class="text-amber">~</span>$</span>
+                <span class="term-command">system-info</span>
+              </div>
+              <div class="term-output">
+                HOST: aws-ec2-t3.micro (Amazon Linux 2023)<br>
+                ENGINEER: Steffin Abraham (BCA)<br>
+                ROLE: Entry-Level DevOps Engineer<br>
+                STATUS: Ready to configure, deploy, and automate.
+              </div>
+            </div>
+
+            <!-- Terminal Input Prompt -->
+            <form id="terminal-form" class="terminal-input-row" autocomplete="off">
+              <label for="terminal-input" class="term-prompt font-mono">
+                <span class="text-teal">steffin@devops-node</span>:<span class="text-amber">~</span>$
+              </label>
+              <input 
+                type="text" 
+                id="terminal-input" 
+                class="terminal-input font-mono" 
+                placeholder="type a command (e.g. 'help', 'skills', 'aws')..." 
+                autocapitalize="off" 
+                spellcheck="false"
+              />
+              <button type="submit" class="terminal-submit-btn" aria-label="Execute command">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section reveal-on-scroll">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="section-tag font-mono">&lt;06. Connect & Collaborate&gt;</div>
+          <h2 class="section-title">Get In Touch</h2>
+          <p class="section-subtitle">Open to entry-level DevOps engineer roles, cloud support positions, and collaborative technical projects.</p>
+        </div>
+
+        <div class="contact-grid reveal-on-scroll">
+          <!-- Left Info Cards -->
+          <div class="contact-info-panel reveal-on-scroll">
+            <div class="glass-card contact-card-direct reveal-on-scroll">
+              <div class="card-glow-edge"></div>
+              <div class="card-inner">
+                <div class="contact-card-icon bg-teal-glow">
+                  <svg class="icon icon-xl text-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <h3 class="contact-card-title">Direct Inquiries</h3>
+                <p class="contact-card-desc">Prefer sending an email directly? Reach out and I will respond promptly.</p>
+                
+                <a href="mailto:steffin2000@gmail.com" class="direct-email-link font-mono">
+                  <span>steffin2000@gmail.com</span>
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </a>
+
+                <div class="contact-pill-list">
+                  <span class="pill-badge"><span class="pulse-dot"></span> Open for Roles</span>
+                  <span class="pill-badge">🎓 BCA Degree Verified</span>
+                  <span class="pill-badge">⚡ Quick Response</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Operational Readiness Card -->
+            <div class="glass-card ops-status-card reveal-on-scroll">
+              <div class="card-glow-edge"></div>
+              <div class="card-inner font-mono text-xs">
+                <div class="ops-header text-amber">
+                  <span>[DISPATCH: CANDIDATE PROFILE]</span>
+                </div>
+                <div class="ops-row"><span class="text-muted">LOCATION:</span> <span class="text-white">India (Available for Remote / Hybrid / On-site)</span></div>
+                <div class="ops-row"><span class="text-muted">FOCUS:</span> <span class="text-teal">DevOps • AWS • Linux • Git Workflows</span></div>
+                <div class="ops-row"><span class="text-muted">INTERVIEW READINESS:</span> <span class="text-white">Immediate</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Contact Form -->
+          <div class="glass-card contact-form-card reveal-on-scroll">
+            <div class="card-glow-edge"></div>
+            <div class="card-inner">
+              <div class="form-title-bar">
+                <h3 class="form-title">Send a Message</h3>
+                <span class="font-mono text-xs text-teal">CHANNEL: SECURE</span>
+              </div>
+              <p class="form-subtext">Fill out the form below. Client-side verified and ready to connect.</p>
+
+              <form id="contact-form" class="contact-form" novalidate>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="contact-name" class="form-label font-mono">
+                      <span>Full Name</span> <span class="required-star">*</span>
+                    </label>
+                    <input 
+                      type="text" 
+                      id="contact-name" 
+                      name="name" 
+                      class="form-control" 
+                      placeholder="e.g. Alex Mercer" 
+                      required 
+                    />
+                    <span class="error-feedback" id="name-error"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-email" class="form-label font-mono">
+                      <span>Email Address</span> <span class="required-star">*</span>
+                    </label>
+                    <input 
+                      type="email" 
+                      id="contact-email" 
+                      name="email" 
+                      class="form-control" 
+                      placeholder="e.g. alex@company.com" 
+                      required 
+                    />
+                    <span class="error-feedback" id="email-error"></span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-subject" class="form-label font-mono">
+                    <span>Subject / Role Topic</span> <span class="required-star">*</span>
+                  </label>
+                  <input 
+                    type="text" 
+                    id="contact-subject" 
+                    name="subject" 
+                    class="form-control" 
+                    placeholder="e.g. Opportunity: Junior DevOps Engineer / Discussion" 
+                    required 
+                  />
+                  <span class="error-feedback" id="subject-error"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-message" class="form-label font-mono">
+                    <span>Your Message</span> <span class="required-star">*</span>
+                  </label>
+                  <textarea 
+                    id="contact-message" 
+                    name="message" 
+                    class="form-control textarea-control" 
+                    rows="5" 
+                    placeholder="Hi Steffin, we reviewed your AWS and Git portfolio and would like to discuss..." 
+                    required
+                  ></textarea>
+                  <span class="error-feedback" id="message-error"></span>
+                </div>
+
+                <button type="submit" id="contact-submit-btn" class="btn btn-teal btn-block">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                  <span id="submit-btn-text">Transmit Message</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Project Lab Modal Dialog -->
+  <dialog id="lab-modal" class="lab-modal">
+    <div class="modal-backdrop-layer"></div>
+    <div class="modal-window glass-card">
+      <div class="card-glow-edge"></div>
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span id="modal-tag" class="font-mono text-xs text-amber">LAB BREAKDOWN</span>
+          <h3 id="modal-title" class="modal-title">Lab Details</h3>
+        </div>
+        <button id="modal-close-btn" class="modal-close-btn" aria-label="Close dialog">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div id="modal-body" class="modal-body">
+        <!-- Dynamically injected via script.js -->
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#hero" class="brand-logo">
+            <span class="logo-symbol">&gt;_</span>
+            <span class="logo-text">SA <span class="accent-slash">//</span> <span class="logo-role">devops</span></span>
+          </a>
+          <p class="footer-tagline">
+            Engineered for stability, speed, and continuous integration. Steffin Abraham &bull; BCA Graduate.
+          </p>
+        </div>
+
+        <div class="footer-nav-groups">
+          <div class="footer-col">
+            <span class="footer-heading font-mono">SECTIONS</span>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#pipeline">CI/CD Pipeline</a></li>
+              <li><a href="#projects">Projects & Labs</a></li>
+              <li><a href="#terminal">Terminal</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <span class="footer-heading font-mono">TECH FOCUS</span>
+            <ul>
+              <li><a href="#skills">AWS EC2 & IAM</a></li>
+              <li><a href="#skills">Git Workflows</a></li>
+              <li><a href="#skills">Linux Administration</a></li>
+              <li><a href="#skills">Bash Automation</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <span class="footer-heading font-mono">DIRECT DISPATCH</span>
+            <ul>
+              <li><a href="mailto:steffin2000@gmail.com">steffin2000@gmail.com</a></li>
+              <li><a href="#contact">Contact Form</a></li>
+              <li><a href="#terminal">Shell Playground</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-status-indicator">
+          <span class="pulse-dot"></span>
+          <span class="font-mono text-xs">Systems: Operational &bull; Latency: 14ms &bull; Region: Global</span>
+        </div>
+
+        <div class="footer-copyright font-mono text-xs text-muted">
+          &copy; <span id="current-year">2026</span> Steffin Abraham. Pure Semantic HTML5, CSS3 & Vanilla JavaScript.
+        </div>
+
+        <a href="#hero" class="back-to-top" aria-label="Back to top">
+          <span>Back to Top &uarr;</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
