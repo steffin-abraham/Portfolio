@@ -436,6 +436,7 @@ body {
   letter-spacing: -0.02em;
   transition: transform var(--transition-fast);
   position: relative;
+  white-space: nowrap;
 }
 
 .brand-logo:hover {
@@ -1411,6 +1412,17 @@ body {
   border-radius: var(--radius-sm);
   padding: 0.65rem 0.85rem;
   margin-top: 1rem;
+}
+
+.fast-email-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.fast-email-link:hover {
+  color: var(--accent-teal);
+  text-decoration: underline;
 }
 
 /* ==========================================================================
@@ -2506,7 +2518,8 @@ body {
     display: flex;
   }
 
-  .header-cta {
+  .header-cta,
+  .header-github {
     display: none;
   }
 
@@ -2542,6 +2555,15 @@ body {
 }
 
 @media (max-width: 480px) {
+  .brand-logo {
+    font-size: 0.95rem;
+  }
+
+  .brand-logo .logo-role,
+  .brand-logo .accent-slash {
+    display: none;
+  }
+
   .hero-title {
     font-size: 2rem;
   }

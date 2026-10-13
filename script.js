@@ -368,6 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <tr><td><span class="text-teal">projects</span></td><td>Lists hands-on engineering lab projects</td></tr>
   <tr><td><span class="text-teal">pipeline</span></td><td>Executes and reports on the CI/CD deployment pipeline</td></tr>
   <tr><td><span class="text-teal">education</span></td><td>Details of BCA degree and academic coursework</td></tr>
+  <tr><td><span class="text-teal">github</span></td><td>Direct link to Steffin's GitHub profile and repositories</td></tr>
   <tr><td><span class="text-teal">contact</span></td><td>Displays direct contact email and communications link</td></tr>
   <tr><td><span class="text-teal">uptime</span></td><td>Displays server uptime and node resource allocation</td></tr>
   <tr><td><span class="text-teal">clear</span></td><td>Clears the terminal output screen</td></tr>
@@ -448,9 +449,21 @@ Focused on reliability, zero-downtime deployments, and defensive security config
 &bull; Specialization: Shifted academic core into hands-on DevOps, cloud computing, and infrastructure reliability.
     `,
 
+    github: () => `
+<span class="text-teal font-bold">Steffin Abraham GitHub Profile:</span><br>
+Link: <a href="https://github.com/steffin-abraham" target="_blank" rel="noopener noreferrer" class="text-amber" style="text-decoration: underline;">https://github.com/steffin-abraham</a><br>
+Repositories: AWS EC2 automation, Git branch workflows, Linux sysadmin daemons.
+    `,
+
+    email: () => `
+<span class="text-teal font-bold">Steffin Abraham Direct Email:</span><br>
+Open in Gmail: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=steffin2000@gmail.com" target="_blank" rel="noopener noreferrer" class="text-amber" style="text-decoration: underline;">steffin2000@gmail.com (Compose in Gmail)</a>
+    `,
+
     contact: () => `
 <span class="text-teal font-bold">Steffin Abraham Contact Information:</span><br>
-Email: <a href="mailto:steffin2000@gmail.com" class="text-amber" style="text-decoration: underline;">steffin2000@gmail.com</a><br>
+Email (Gmail): <a href="https://mail.google.com/mail/?view=cm&fs=1&to=steffin2000@gmail.com" target="_blank" rel="noopener noreferrer" class="text-amber" style="text-decoration: underline;">steffin2000@gmail.com</a><br>
+GitHub: <a href="https://github.com/steffin-abraham" target="_blank" rel="noopener noreferrer" class="text-amber" style="text-decoration: underline;">github.com/steffin-abraham</a><br>
 Status: Available for full-time junior DevOps / Cloud infrastructure positions.<br>
 Location: India (Open to Remote / Hybrid / On-site roles).
     `,
@@ -845,18 +858,25 @@ fi</code></pre>
         return;
       }
 
-      // Simulate sending
+      // Prepare direct Gmail compose URL with recipient, subject, and message pre-populated
+      const subject = encodeURIComponent(subjectInput.value.trim());
+      const body = encodeURIComponent(
+        `Hi Steffin,\n\n${messageInput.value.trim()}\n\n---\nSender: ${nameInput.value.trim()}\nEmail: ${emailInput.value.trim()}`
+      );
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=steffin2000@gmail.com&su=${subject}&body=${body}`;
+
       submitBtn.disabled = true;
       const originalText = submitBtnText.textContent;
-      submitBtnText.textContent = 'Transmitting Message...';
+      submitBtnText.textContent = 'Launching Gmail...';
 
       setTimeout(() => {
+        window.open(gmailUrl, '_blank');
         submitBtn.disabled = false;
         submitBtnText.textContent = originalText;
         contactForm.reset();
 
-        showToast('Transmission Successful! Thank you for reaching out to Steffin Abraham.', 'success');
-      }, 950);
+        showToast('Opening Gmail directly addressed to steffin2000@gmail.com', 'success');
+      }, 450);
     });
   }
 
